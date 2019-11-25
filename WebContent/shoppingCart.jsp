@@ -1,22 +1,11 @@
-<%@page import="org.iesalixar.daw2.dao.RentDaoImpl"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="org.iesalixar.daw2.model.Product"%>
-<%@ page import="org.iesalixar.daw2.dao.ProductDaoImpl"%>
-<%@ page import="org.iesalixar.daw2.model.Rent"%>
-<%@ page import="org.iesalixar.daw2.dao.RentDaoImpl"%>
-<%@ page import="java.util.List"%>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:setBundle basename="interface" />
+<%@ include file="init.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"> 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -183,12 +172,7 @@
 					<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-warning" type="submit" style="margin-rigth: 20px">
 						Dejar de alquilar
 					</button>
-				</form>
-				<!-- <form action="NewRentServlet" method="post">
-					<input type="hidden" id="<c:out value="${item.getProduct_id()}"/>" name="product_id" value="<c:out value="${item.getProduct_id()}"/>"> 
-					<input type="hidden" id="username" name="username" value="<%=//username%>">
-					<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-danger" type="submit" style="margin-rigth: 20px">Alquilar</button>
-				</form> -->
+				
 				
 				</div>
 				</div>
