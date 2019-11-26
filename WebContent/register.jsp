@@ -15,9 +15,83 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
+	<!--<script type="text/javascript" src="js/registerValidator.js"></script>-->
+ 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>FilmClub</title>
 <link rel="shortcut icon" href="img/FCLogo.png" />
+
+<script>
+	window.onload = function () {
+    document.getElementById("name").addEventListener("blur", function telfVal() {
+
+        var regex = /^[a-z0-9_-]{8,15}$/;
+
+        if (document.getElementById("name").value == " " || document.getElementById("name").value.length == 0 || regex.test(document.getElementById("name").value) == false) {
+            document.getElementById("name").style = "background-color:red";
+
+        } else {
+
+            document.getElementById("name").style = "background-color:green";
+        }
+    });
+
+    document.getElementById("pass").addEventListener("blur", function telfVal2() {
+
+        var regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$*%^&+=])(?=\\S+$).{8,}$/;
+
+        if (document.getElementById("pass").value == " " || document.getElementById("pass").value.length == 0 || regex.test(document.getElementById("pass").value) == false) {
+			document.getElementById("pass").style = "background-color:red";
+			var text = document.createTextNode(". Esto es un nuevo parrafo agregado con appendChild()"); 
+        	document.getElementById("pass").appendChild(text);
+
+        } else {
+
+            document.getElementById("pass").style = "background-color:green";
+        }
+    });
+
+    document.getElementById("fullname").addEventListener("blur", function telfVal3() {
+
+        var regex = /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/;
+
+        if (document.getElementById("fullname").value == " " || document.getElementById("fullname").value.length == 0 || regex.test(document.getElementById("fullname").value) == false) {
+            document.getElementById("fullname").style = "background-color:red";
+
+        } else {
+
+            document.getElementById("fullname").style = "background-color:green";
+        }
+    });
+
+    document.getElementById("address").addEventListener("blur", function telfVal4() {
+
+        var regex = /^[a-zA-Z0-9\s,'-]*$/;
+
+        if (document.getElementById("address").value == " " || document.getElementById("address").value.length == 0 || regex.test(document.getElementById("address").value) == false) {
+            document.getElementById("address").style = "background-color:red";
+
+        } else {
+
+            document.getElementById("address").style = "background-color:green";
+        }
+    });
+
+    document.getElementById("email").addEventListener("blur", function telfVal5() {
+
+        var regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$/;
+
+        if (document.getElementById("email").value == " " || document.getElementById("email").value.length == 0 || regex.test(document.getElementById("email").value) == false) {
+            document.getElementById("email").style = "background-color:red";
+
+        } else {
+
+            document.getElementById("email").style = "background-color:green";
+        }
+    });
+
+}
+</script>
 </head>
 <body>
 	<%
@@ -131,7 +205,7 @@
 		}
 	%>
 
-	<form action="ResgistrationServlet" method="post" >
+	<form action="ResgistrationServlet "  method="post" >
 		<fieldset>
 			<c:choose>
 				<c:when test="${not empty err}">
@@ -163,6 +237,7 @@
 				
 				<input id="pass" type="password" placeholder="Contraseña" name="password">
 			</div>
+			<p id="errorPass"></p>
 			</div>
 			
 			<div class="col-md-4 mb-3">
