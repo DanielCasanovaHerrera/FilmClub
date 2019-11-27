@@ -15,7 +15,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
-	<!--<script type="text/javascript" src="js/registerValidator.js"></script>-->
  
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>FilmClub</title>
@@ -29,21 +28,24 @@
 
         if (document.getElementById("name").value == " " || document.getElementById("name").value.length == 0 || regex.test(document.getElementById("name").value) == false) {
             document.getElementById("name").style = "background-color:red";
-
+            var text = "Ejemplo nombre correcto: ''Daniel86''";  
+        	document.getElementById("errorName").innerHTML=text;
         } else {
 
             document.getElementById("name").style = "background-color:green";
+			document.getElementById("errorName").innerHTML=" ";
+			
         }
     });
 
     document.getElementById("pass").addEventListener("blur", function telfVal2() {
 
-        var regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$*%^&+=])(?=\\S+$).{8,}$/;
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
 
         if (document.getElementById("pass").value == " " || document.getElementById("pass").value.length == 0 || regex.test(document.getElementById("pass").value) == false) {
 			document.getElementById("pass").style = "background-color:red";
-			var text = document.createTextNode(". Esto es un nuevo parrafo agregado con appendChild()"); 
-        	document.getElementById("pass").appendChild(text);
+			var text = "Ejemplo password correcto: ''Password8$''";  
+        	document.getElementById("errorPass").innerHTML=text;
 
         } else {
 
@@ -57,6 +59,8 @@
 
         if (document.getElementById("fullname").value == " " || document.getElementById("fullname").value.length == 0 || regex.test(document.getElementById("fullname").value) == false) {
             document.getElementById("fullname").style = "background-color:red";
+            var text = "Ejemplo Nombre completo correcto: ''Daniel Casanova Herrera''";  
+        	document.getElementById("errorFullname").innerHTML=text;
 
         } else {
 
@@ -70,6 +74,8 @@
 
         if (document.getElementById("address").value == " " || document.getElementById("address").value.length == 0 || regex.test(document.getElementById("address").value) == false) {
             document.getElementById("address").style = "background-color:red";
+            var text = "Ejemplo direccion correcto: ''Calle Ejemplo 5''";  
+        	document.getElementById("errorAddress").innerHTML= text;
 
         } else {
 
@@ -83,6 +89,8 @@
 
         if (document.getElementById("email").value == " " || document.getElementById("email").value.length == 0 || regex.test(document.getElementById("email").value) == false) {
             document.getElementById("email").style = "background-color:red";
+            var text = "Ejemplo email correcto: ''ejemplo@email.com''"; 
+        	document.getElementById("errorEmail").innerHTML= text;
 
         } else {
 
@@ -222,7 +230,9 @@
 						class="material-icons">account_box</i></span>
 				</div>
 				
+			
 				<input id="name" type="text" placeholder="Introduce el nombre" name="username">
+				<div id="errorName" style="color: coral; font-size: large;"></div>
 			</div>
 			</div>
 			
@@ -237,7 +247,7 @@
 				
 				<input id="pass" type="password" placeholder="Contraseña" name="password">
 			</div>
-			<p id="errorPass"></p>
+			<div id="errorPass" style="color: coral; font-size: large;"></div>
 			</div>
 			
 			<div class="col-md-4 mb-3">
@@ -249,6 +259,7 @@
 						class="material-icons">account_box</i></span>
 				</div>
 				<input id="fullname" type="text" placeholder="Nombre completo" name="user_fullname">
+				<div id="errorFullname" style="color: coral; font-size: large;"></div>
 			</div>
 			</div>
 			<div class="col-md-4 mb-3">
@@ -259,6 +270,7 @@
                 </div>
 				
 				<input id="address" type="text" placeholder="Direccion" name="address"> 
+				<div id="errorAddress" style="color: coral; font-size: large;"></div>
 			</div>
 			</div>
 			<div class="col-md-4 mb-3">
@@ -269,6 +281,7 @@
 	                <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="material-icons">email</i></span>
 	            </div>
 				<input id="email" type="text" placeholder="Email…" name="email"><br />
+				<div id="errorEmail" style="color: coral; font-size: large;"></div>
 			</div>
 			</div>
 			<div class="col-md-4 mb-3">
