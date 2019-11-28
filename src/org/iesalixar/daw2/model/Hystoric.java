@@ -48,15 +48,14 @@ public class Hystoric implements Serializable {
 
 	}
 
-	public Hystoric(int hystoric_id, User user_id, Product product_id, Rent rent_id, Product reposition_value,
-			Rent rent_dateIn) {
+	public Hystoric(int hystoric_id, User user_id, Product product_id) {
 		super();
 		this.hystoric_id = hystoric_id;
 		this.user_id = user_id;
 		this.product_id = product_id;
-		this.rent_id = rent_id;
-		this.reposition_value = reposition_value;
-		this.rent_dateIn = rent_dateIn;
+		//this.rent_id = rent_id;
+		//this.reposition_value = reposition_value;
+		//this.rent_dateIn = rent_dateIn;
 	}
 
 	public int getHystoric_id() {

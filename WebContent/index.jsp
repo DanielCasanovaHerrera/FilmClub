@@ -181,7 +181,7 @@
 					<input type="hidden" name="img" value="<img
 					class="img-fluid img-thumbnail"
 					alt="${item.getProduct_id().getShortname()}"
-					src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">"/>"> 
+					src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">"/>
 					
 					<input type="hidden" name="fulldescription" value="<c:out value="${item.getProduct_id().getFulldescription()}"/>">
 					
