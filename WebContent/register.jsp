@@ -114,7 +114,7 @@
 			}
 		}
 	%>
-
+	<%@ include file="social.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="margin: 24px 0;">
 		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"

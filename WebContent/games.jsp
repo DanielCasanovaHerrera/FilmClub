@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/social.css">
 <title>FilmClub</title>
 <link rel="shortcut icon" href="img/FCLogo.png" />
 </head>
@@ -31,7 +32,7 @@
 			}
 		}
 	%>
-
+	<%@ include file="social.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="margin: 24px 0;">
 		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
@@ -82,14 +83,14 @@
 										<div class="invalid-tooltip">Please choose a unique and
 											valid username.</div>
 									</div>
-									<label for="validationTooltipPassword">Contraseña</label>
+									<label for="validationTooltipPassword">Contraseï¿½a</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"
 												id="validationTooltipPasswordPrepend"><i
 												class="material-icons">https</i></span>
 										</div>
-										<input type="password" name="password" value="contraseña"
+										<input type="password" name="password" value="contraseï¿½a"
 											class="form-control" id="validationTooltipPassworde"
 											placeholder="Password"
 											aria-describedby="validationTooltipUsernamePrepend" required>
@@ -209,7 +210,7 @@
 								<h6>${item.getFulldescription()}</h6>
 							</h5>
 							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
+							<h5>Aï¿½o de lanzamiento: ${item.getYear()}</h5>
 							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
 						</div>
 
@@ -289,7 +290,7 @@
 								<h6>${item.getFulldescription()}</h6>
 							</h5>
 							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
+							<h5>Aï¿½o de lanzamiento: ${item.getYear()}</h5>
 							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
 						</div>
 

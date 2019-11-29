@@ -4,6 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/social.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 <script
@@ -32,7 +33,7 @@
 			}
 		}
 	%>
-
+	<%@ include file="social.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="margin: 24px 0;">
 		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
@@ -191,11 +192,11 @@
 		</c:when>
 	</c:choose>
 
-	<div class="row text-center center text-lg-left">
+	<div class="row align-items-center">
 
 		<c:forEach var='item' items='${products}'>
 
-			<div class="col-lg-4 col-md-4 col-6" data-toggle="modal"
+			<div class="col-lg-4 col-md-4 col-6 margin-left" id="productoscss" data-toggle="modal"
 				data-target="#modal${item.product_id}">
 				<h3>${item.getShortname()}</h3>
 				<a href="#" class="d-block mb-4 h-100"> <img
