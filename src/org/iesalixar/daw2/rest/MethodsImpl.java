@@ -15,34 +15,37 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.google.gson.Gson;
 
-@Path("/")
+@Path("/services/getProducts")
 
 public class MethodsImpl {
-	
+
 	final static Logger logger = Logger.getLogger(MethodsImpl.class);
-	
+
 	@GET
-	@Path("/getProducts")
 	@Produces("application/json")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response getProducts() throws JSONException {
 
 		JSONObject jsonObject = new JSONObject();
 		Gson gson = new Gson();
-		String products = "";
+		String products = "{";
 		List<Product> productlist = ProductDaoImpl.getProducts(-1, true);
 
 		for (int i = 0; i <= productlist.size() - 1; i++) {
-
-			products = " Product: " + productlist.get(i).getShortname() + "; "+ products;
+			if (i == productlist.size() - 1) {
+				products = products + " Product" + (i + 1) + ":[{ Nombre:" + productlist.get(i).getShortname() + "}]";
+			}else {
+				products = products + " Product" + (i + 1) + ":[{ Nombre:" + productlist.get(i).getShortname() + "}],";
+			}
 
 		}
-		jsonObject.put("The Products: ", products);
+		products = products + "}";
+		jsonObject.put("Products: ", products);
 
 		logger.info("getProducts was executed in rest");
 
 		return Response.status(200).entity(gson.toJson(jsonObject)).build();
-		
+
 	}
 
 }

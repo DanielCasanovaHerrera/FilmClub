@@ -192,4 +192,42 @@ public class ProductDaoImpl {
 		return changeToState(product_id, false);
 	}
 	
+	public static boolean update(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
+		boolean success = true;
+
+		Session session = null;
+
+		try {
+			Product product = getProductId(product_id);
+			HibernateUtil.buildSessionFactory();
+			HibernateUtil.openSessionAndBindToThread();
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			
+			if(product.getShortname()!=shortName && shortName!=null && shortName!=" "){
+				product.setShortname(shortName);
+			}
+			if(product.getFulldescription()!=fulldescription && fulldescription!=null && fulldescription!=" "){
+				product.setFulldescription(fulldescription);
+			}
+			if(product.getCompany()!=company && company!=null && company!=" "){
+				product.setCompany(company);
+			}
+			if(product.getReposition_value()!=reposition_value && reposition_value!=null){
+				product.setReposition_value(reposition_value);
+			}
+			
+			session.update(product);
+			session.getTransaction().commit();
+			logger.info(product);
+
+		} catch (Exception e) {
+			logger.error("ProductDAOImpl.update has raised an exception: " + e.getMessage());
+			success = false;
+		}
+
+		return success;
+	}
+
+	
 }
