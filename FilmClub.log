@@ -1,0 +1,28 @@
+2019-11-29 18:16:50 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-11-29 18:16:50 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-11-29 18:16:51 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-29 18:16:52 WARN  pooling:73 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-29 18:16:52 INFO  pooling:129 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/videoclub]
+2019-11-29 18:16:52 INFO  pooling:138 - HHH10001001: Connection properties: {user=usuario, password=****}
+2019-11-29 18:16:52 INFO  pooling:143 - HHH10001003: Autocommit mode: false
+2019-11-29 18:16:52 INFO  DriverManagerConnectionProviderImpl:281 - HHH000115: Hibernate connection pool size: 25 (min=1)
+2019-11-29 18:16:53 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-29 18:16:56 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-11-29 18:16:57 DEBUG SQL:94 - select product0_.product_id as product_1_2_, product0_.active as active2_2_, product0_.company as company3_2_, product0_.fulldescription as fulldesc4_2_, product0_.img as img5_2_, product0_.reposition_value as repositi6_2_, product0_.shortname as shortnam7_2_, product0_.state as state8_2_, product0_.type_id as type_id10_2_, product0_.year as year9_2_ from product product0_ where product0_.active=1 and product0_.state=1
+2019-11-29 18:16:57 DEBUG SQL:94 - select type0_.type_id as type_id1_5_0_, type0_.typename as typename2_5_0_ from type type0_ where type0_.type_id=?
+2019-11-29 18:16:57 DEBUG SQL:94 - select type0_.type_id as type_id1_5_0_, type0_.typename as typename2_5_0_ from type type0_ where type0_.type_id=?
+2019-11-29 18:16:57 INFO  ProductDaoImpl:34 - ProductDAOImpl.getProducts[org.iesalixar.daw2.model.Product@1b32cd16, org.iesalixar.daw2.model.Product@4a03bb68]
+2019-11-29 18:17:21 INFO  Version:46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-11-29 18:17:21 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2019-11-29 18:17:22 INFO  Version:49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-29 18:17:22 WARN  pooling:73 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2019-11-29 18:17:22 INFO  pooling:129 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/videoclub]
+2019-11-29 18:17:23 INFO  pooling:138 - HHH10001001: Connection properties: {user=usuario, password=****}
+2019-11-29 18:17:23 INFO  pooling:143 - HHH10001003: Autocommit mode: false
+2019-11-29 18:17:23 INFO  DriverManagerConnectionProviderImpl:281 - HHH000115: Hibernate connection pool size: 25 (min=1)
+2019-11-29 18:17:23 INFO  Dialect:157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-29 18:17:25 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-11-29 18:17:25 DEBUG SQL:94 - select product0_.product_id as product_1_2_, product0_.active as active2_2_, product0_.company as company3_2_, product0_.fulldescription as fulldesc4_2_, product0_.img as img5_2_, product0_.reposition_value as repositi6_2_, product0_.shortname as shortnam7_2_, product0_.state as state8_2_, product0_.type_id as type_id10_2_, product0_.year as year9_2_ from product product0_ where product0_.active=1 and product0_.state=1
+2019-11-29 18:17:25 DEBUG SQL:94 - select type0_.type_id as type_id1_5_0_, type0_.typename as typename2_5_0_ from type type0_ where type0_.type_id=?
+2019-11-29 18:17:25 DEBUG SQL:94 - select type0_.type_id as type_id1_5_0_, type0_.typename as typename2_5_0_ from type type0_ where type0_.type_id=?
+2019-11-29 18:17:25 INFO  ProductDaoImpl:34 - ProductDAOImpl.getProducts[org.iesalixar.daw2.model.Product@1b32cd16, org.iesalixar.daw2.model.Product@4a03bb68]
