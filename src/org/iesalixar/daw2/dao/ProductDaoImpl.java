@@ -192,7 +192,7 @@ public class ProductDaoImpl {
 		return changeToState(product_id, false);
 	}
 	
-	public static boolean update(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
+	/*public static boolean update(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
 		boolean success = true;
 
 		Session session = null;
@@ -227,7 +227,7 @@ public class ProductDaoImpl {
 		}
 
 		return success;
-	}
+	}*/
 
 	
 }

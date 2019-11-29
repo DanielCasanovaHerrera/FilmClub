@@ -15,6 +15,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.pdfbox.tools.PDFBox;
+import org.iesalixar.daw2.helper.Pdf;
 
 
 //@WebServlet("/PdfServlet")
@@ -41,55 +42,24 @@ public class PdfServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {	
-		PDDocument doc =new PDDocument();
+		String urlIndex="index.jsp";
 		try {
-	        //ByteArrayOutputStream output = new ByteArrayOutputStream();
-	        String username = request.getParameter("username");
-	        String productname = request.getParameter("productname");
+	        ByteArrayOutputStream output = new ByteArrayOutputStream();
+	        String rent = request.getParameter("rentId");
 	        String fulldescription = request.getParameter("fulldescription");
-	        //String img= request.getParameter("img");
-	        
-	       //output = PDFBox.createPDF(username, productname, fulldescription);
-	        String pdfName="Pdf"+productname+".pdf";
-	        
-	        PDPage pag1= new PDPage();
-	        doc.addPage(pag1);
-	        
-	        PDPageContentStream contentStream = new PDPageContentStream(doc, pag1);
-	        
-	        contentStream.beginText();
-	        contentStream.setFont( PDType1Font.TIMES_ROMAN, 16 );
-	        
-	        //Setting the leading
-	        contentStream.setLeading(14.5f);
+	        String userName = request.getParameter("username");
+	        String img= request.getParameter("img");
+	        String productname= request.getParameter("productname");
+	      
+	        output = Pdf.createPDF(userName,productname,img,fulldescription,rent);
 
-	        //Setting the position for the line
-	        contentStream.newLineAtOffset(25, 725);
-	        
-	        
-	        contentStream.showText(username);
-	        contentStream.newLine();
-	        contentStream.showText(productname);
-	        contentStream.newLine();
-	        contentStream.showText(fulldescription);
-	        contentStream.newLine();
-	        //contentStream.showText(img);
-	        contentStream.endText();
-	        contentStream.close();
-	        doc.save(pdfName);
-
-	       // response.addHeader("Content-Type", "application/force-download"); 
-	       // response.addHeader("Content-Disposition", "attachment; filename=\"" + productname + ".pdf\"");
-	        //response.getOutputStream().write(output.toByteArray());
-	        
-	        doc.close();
-	        
-	        String urlIndex = "/FilmClub/index.jsp";
+	        response.addHeader("Content-Type", "application/force-download"); 
+	        response.addHeader("Content-Disposition", "attachment; filename=\"" +"Equipo: "+ productname + ".pdf\"");
+	        response.getOutputStream().write(output.toByteArray());
 	        response.sendRedirect(urlIndex);
 	    } catch (Exception ex) {            
 	        ex.printStackTrace();
-	    }finally{
-	    	doc.close();
+	        response.sendRedirect(urlIndex);
 	    }
 	}
 

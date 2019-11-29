@@ -217,6 +217,21 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-success"
 								data-dismiss="modal">CERRAR</button>
+								<c:choose>
+								<c:when test="${role=='user'}">
+									<form action="NewRentServlet" method="post">
+										<input type="hidden"
+											id="<c:out value="${item.getProduct_id()}"/>"
+											name="product_id"
+											value="<c:out value="${item.getProduct_id()}"/>"> <input
+											type="hidden" id="username" name="username"
+											value="<%=username%>">
+										<button style="margin-right: 10px"
+											class="nav navbar-nav navbar-right btn btn-danger"
+											type="submit" style="margin-rigth: 20px">Alquilar</button>
+									</form>
+								</c:when>
+							</c:choose>
 						</div>
 
 					</div>

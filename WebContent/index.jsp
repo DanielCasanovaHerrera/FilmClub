@@ -85,14 +85,14 @@
 										<div class="invalid-tooltip">Please choose a unique and
 											valid username.</div>
 									</div>
-									<label for="validationTooltipPassword">Contraseña</label>
+									<label for="validationTooltipPassword">ContraseÃ±a</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
 											<span class="input-group-text"
 												id="validationTooltipPasswordPrepend"><i
 												class="material-icons">https</i></span>
 										</div>
-										<input type="password" name="password" value="contraseña"
+										<input type="password" name="password" value="contraseÃ±a"
 											class="form-control" id="validationTooltipPassworde"
 											placeholder="Password"
 											aria-describedby="validationTooltipUsernamePrepend" required>
@@ -175,15 +175,15 @@
 						style="margin-rigth: 20px">Dejar de alquilar</button>
 				</form>
 				<form action="PdfServlet" method="post">
-				<input type="hidden" name="rentId" value="<c:out value="${item.getRent_id()}"/>"> 
-					<input type="hidden" name="username" value="<c:out value="${item.getUser_id().getUsername()}"/>"> 
-					<input type="hidden" name="productname" value="<c:out value="${item.getProduct_id().getShortname()}"/>"> 
+				<input type="hidden" name="rentId" value="Precio alquiler: <c:out value="${item.getRent_id()}"/>â‚¬"> 
+					<input type="hidden" name="username" value="Nombre del usuario: <c:out value="${item.getUser_id().getUsername()}"/>"> 
+					<input type="hidden" name="productname" value="Nombre del producto: <c:out value="${item.getProduct_id().getShortname()}"/>"> 
 					<input type="hidden" name="img" value="<img
 					class="img-fluid img-thumbnail"
 					alt="${item.getProduct_id().getShortname()}"
 					src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">"/>
 					
-					<input type="hidden" name="fulldescription" value="<c:out value="${item.getProduct_id().getFulldescription()}"/>">
+					<input type="hidden" name="fulldescription" value="Descripcion completa: <c:out value="${item.getProduct_id().getFulldescription()}"/>">
 					
 					<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-success" type="submit" style="margin-rigth: 20px">PDF</button>
 				</form>
@@ -192,8 +192,6 @@
 	</c:choose>
 
 	<div class="row text-center center text-lg-left">
-
-
 
 		<c:forEach var='item' items='${products}'>
 
@@ -227,7 +225,7 @@
 								<h6>${item.getFulldescription()}</h6>
 							</h5>
 							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
+							<h5>AÃ±o de lanzamiento: ${item.getYear()}</h5>
 							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
 
 						</div>
@@ -307,7 +305,7 @@
 								<h6>${item.getFulldescription()}</h6>
 							</h5>
 							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
+							<h5>AÃ±o de lanzamiento: ${item.getYear()}</h5>
 							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
 						</div>
 

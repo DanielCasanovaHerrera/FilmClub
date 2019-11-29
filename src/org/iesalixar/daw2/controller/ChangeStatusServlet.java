@@ -40,7 +40,7 @@ public class ChangeStatusServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-int product_id = Integer.valueOf(request.getParameter("product_id").split("&")[0]);
+		int product_id = Integer.valueOf(request.getParameter("product_id").split("&")[0]);
 		
 		boolean status;
 		if(request.getParameter("product_id").split("&")[1].equals("approve"))
