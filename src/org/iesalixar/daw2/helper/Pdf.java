@@ -1,6 +1,7 @@
 package org.iesalixar.daw2.helper;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +11,12 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.encoding.WinAnsiEncoding;
 
-public class Pdf {
-	
-	private static final PDFont FONT = PDType1Font.TIMES_ITALIC;
+public class Pdf{
+	//private static final PDFont FONT = PDType0Font.load(doc, new FileInputStream("c:/windows/fonts/arial.ttf"), false);//PDType1Font.TIMES_ITALIC;
     private static final float FONT_SIZE = 12;
     private static final float LEADING = -1.5f * FONT_SIZE;
 	
@@ -24,7 +25,7 @@ public class Pdf {
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		
 		try (final PDDocument doc = new PDDocument()){
-
+			PDFont FONT = PDType0Font.load(doc, new FileInputStream("c:/windows/fonts/arial.ttf"), false);
             PDPage page = new PDPage();
             doc.addPage(page);
             PDPageContentStream contentStream = new PDPageContentStream(doc, page);
@@ -37,11 +38,11 @@ public class Pdf {
             float startY = mediaBox.getUpperRightY() - marginY;
             
             contentStream.beginText();
-            addParagraph(contentStream, width, startX, startY, userName, true);
-            addParagraph(contentStream, width, 0, -FONT_SIZE, productname);
-            addParagraph(contentStream, width, 0, -FONT_SIZE, fulldescription, false);
-            addParagraph(contentStream, width, 0, -FONT_SIZE, img, false);
-            addParagraph(contentStream, width, 0, -FONT_SIZE, rent, false);
+            addParagraph(FONT,contentStream, width, startX, startY, userName, true);
+            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, productname);
+            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, fulldescription, false);
+            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, img, false);
+            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, rent, false);
             contentStream.endText();
 
             contentStream.close();
@@ -53,18 +54,18 @@ public class Pdf {
 		return output;
 	}
 	
-	private static void addParagraph(PDPageContentStream contentStream, float width, float sx,
+	private static void addParagraph(PDFont FONT,PDPageContentStream contentStream, float width, float sx,
 			float sy, String text) throws IOException {
 		text = text.replace("\n", "").replace("\r", "");
 		text= remove(text);
-		addParagraph(contentStream, width, sx, sy, text, false);
+		addParagraph(FONT,contentStream, width, sx, sy, text, false);
 	}
 
-	private static void addParagraph(PDPageContentStream contentStream, float width, float sx,
+	private static void addParagraph(PDFont FONT,PDPageContentStream contentStream, float width, float sx,
 			float sy, String text, boolean justify) throws IOException {
 		text = text.replace("\n", "").replace("\r", "");
 		text= remove(text);
-		List<String> lines = parseLines(text, width);
+		List<String> lines = parseLines(FONT,text, width);
 		contentStream.setFont(FONT, FONT_SIZE);
 		contentStream.newLineAtOffset(sx, sy);
 		for (String line: lines) {
@@ -85,7 +86,7 @@ public class Pdf {
 		}
 	}
 
-	private static List<String> parseLines(String text, float width) throws IOException {
+	private static List<String> parseLines(PDFont FONT,String text, float width) throws IOException {
 		List<String> lines = new ArrayList<String>();
 		text = text.replace("\n", "").replace("\r", "");
 		text= remove(text);

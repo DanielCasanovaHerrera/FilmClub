@@ -17,6 +17,7 @@
 
  
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/social.css">
 <title>FilmClub</title>
 <link rel="shortcut icon" href="img/FCLogo.png" />
 
@@ -204,8 +205,10 @@
 			<li class="breadcrumb-item active"><a href="register.jsp">Register</a></li>
 		</ol>
 	</nav>
+<div class="container" >
 
-<h1>Registrate FilmClub</h1>
+
+
 	<%
 		String err = "";
 		if (request.getAttribute("err") != null) {
@@ -213,7 +216,8 @@
 		}
 	%>
 
-	<form action="ResgistrationServlet "  method="post" >
+<h1>Registrate FilmClub</h1>
+	<form action="ResgistrationServlet "  method="post">
 		<fieldset>
 			<c:choose>
 				<c:when test="${not empty err}">
@@ -289,8 +293,14 @@
 			</div>
 		</fieldset>
 	</form>
+	
+	
+</div>
 
-
-
+ <footer id="sticky-footer" class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <small>Copyright &copy; FilmClub</small>
+    </div>
+  </footer>
 </body>
 </html>

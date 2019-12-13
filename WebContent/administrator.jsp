@@ -120,7 +120,7 @@
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item "><a href="index.jsp">Principal</a></li>
 			<li class="breadcrumb-item active"><a href="administrator.jsp">Zona
-					de Administraci�n</a></li>
+					de Administracion</a></li>
 		</ol>
 	</nav>
 
@@ -145,16 +145,9 @@
 		</div>
 	</div>
 
-	<c:choose>
-		<c:when test="${role == 'admin'}">
-			<h1>
-				<fmt:message key="products.fulllist" />
-				:
-			</h1>
-			<h1>Products Activated</h1>
-		</c:when>
-	</c:choose>
-
+	
+<div class="container alert-danger" id="general-content">
+<h1>Productos Activados</h1><br>
 	<div class="row text-center center text-lg-left">
 
 
@@ -230,10 +223,11 @@
 				</div>
 			</div>
 		</c:forEach>
+		</div>
 		<br>
 		<br>
-		<h1>Products Not Activated</h1>
-
+		<h1 class="text-center">Productos No Activados</h1>
+<div class="container alert-danger" id="general-content">
 		<c:forEach var='item' items='${productsNotActivated}'>
 			<div class="col-lg-4 col-md-4 col-6" data-toggle="modal"
 				data-target="#modal${item.product_id}">
@@ -278,7 +272,7 @@
 											id="<c:out value=" ${item.getProduct_id()}" />"
 											name="product_id"
 											value="
-										<c:out value="${item.getProduct_id()}" />&approve">
+										<c:out value="${item.getProduct_id().getState()}" />&approve">
 										<button style="margin-right: 10px"
 											class="nav navbar-nav navbar-right btn btn-warning"
 											type="submit" style="margin-rigth: 20px">
@@ -310,7 +304,7 @@
 				</div>
 			</div>
 		</c:forEach>
-
+</div>
 
 	</div>
 

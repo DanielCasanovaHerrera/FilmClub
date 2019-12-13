@@ -1,4 +1,4 @@
-<%@ include file="init.jsp" %>
+<%@ include file="init.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,12 +33,11 @@
 			}
 		}
 	%>
-	<%@ include file="social.jsp" %>
+	<%@ include file="social.jsp"%>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="margin: 24px 0;">
 		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
-			height="50px">
-			</a>
+			height="50px"> </a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navb">
 			<span class="navbar-toggler-icon"></span>
@@ -54,20 +53,27 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="games.jsp">Juegos</a>
 				</li>
+				
 				<c:choose>
 					<c:when test="${role == 'admin'}">
 						<li class="nav-item"><a class="nav-link"
 							href="administrator.jsp">administrador</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="updateProduct.jsp">Modificar Productos</a></li>	
 					</c:when>
+					<c:when test="${username != null}">
+						<li class="nav-item"><a class="nav-link" href="settingsUser.jsp">Mysite</a></li>
+					</c:when>
+					
 				</c:choose>
 			</ul>
 
 			<c:choose>
-			
+
 				<c:when test="${username == null}">
 					<div class="form-inline my-2 my-lg-0">
 						<div class="btn-group">
-							<button type="button" class="btn btn-success dropdown-toggle"
+							<button style="margin-right:50px" type="button" class="btn btn-success dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">Iniciar Sesion</button>
 							<div class="dropdown-menu">
@@ -100,6 +106,7 @@
 										<div class="invalid-tooltip">Please choose a unique and
 											valid password.</div>
 									</div>
+									<br>
 									<button type="submit" class="btn btn-warning" value="Enviar">Enviar</button>
 									<a class="btn btn-primary" href="register.jsp">Resgistrate</a>
 								</form>
@@ -144,188 +151,201 @@
 			<p>Esperamos que les guste y encuentren lo que buscan</p>
 		</div>
 	</div>
+	<div class="container alert-info" id="my-content" >
+		<c:choose>
+			<c:when test="${role == 'user'}">
+				<h1 class="text-center">
+					<fmt:message key="products.yourlist" />
+				</h1>
 
-	<c:choose>
-		<c:when test="${role == 'user'}">
-			<h1>
-				<fmt:message key="products.yourlist" />
-				:
-			</h1>
-
-			<c:forEach var='item' items='${myRent}'>
-			${item.getProduct_id().getShortname()}
-			<a href="#" class="d-block mb-4 h-100"> <img
-					class="img-fluid img-thumbnail"
-					alt="${item.getProduct_id().getShortname()}"
-					src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">
-				</a>
-
-				<form action="ChangeRentServlet" method="post">
-					<input type="hidden" id="<c:out value="${item.getRent_id()}"/>"
-						name="rent_id" value="<c:out value="${item.getRent_id()}"/>">
-					<input type="hidden"
-						id="<c:out value="${item.getProduct_id().getProduct_id()}"/>"
-						name="product_id"
-						value="<c:out value="${item.getProduct_id().getProduct_id()}"/>">
-					<input type="hidden"
-						id="<c:out value="${item.getUser_id().getUser_id()}"/>"
-						name="user_id"
-						value="<c:out value="${item.getUser_id().getUser_id()}"/>">
-					<button style="margin-right: 10px"
-						class="nav navbar-nav navbar-right btn btn-warning" type="submit"
-						style="margin-rigth: 20px">Dejar de alquilar</button>
-				</form>
-				<form action="PdfServlet" method="post">
-				<input type="hidden" name="rentId" value="Precio alquiler: <c:out value="${item.getRent_id()}"/>€"> 
-					<input type="hidden" name="username" value="Nombre del usuario: <c:out value="${item.getUser_id().getUsername()}"/>"> 
-					<input type="hidden" name="productname" value="Nombre del producto: <c:out value="${item.getProduct_id().getShortname()}"/>"> 
-					<input type="hidden" name="img" value="<img
-					class="img-fluid img-thumbnail"
-					alt="${item.getProduct_id().getShortname()}"
-					src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">"/>
-					
-					<input type="hidden" name="fulldescription" value="Descripcion completa: <c:out value="${item.getProduct_id().getFulldescription()}"/>">
-					
-					<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-success" type="submit" style="margin-rigth: 20px">PDF</button>
-				</form>
-			</c:forEach>
-		</c:when>
-	</c:choose>
-
-	<div class="row align-items-center">
-
-		<c:forEach var='item' items='${products}'>
-
-			<div class="col-lg-4 col-md-4 col-6 margin-left" id="productoscss" data-toggle="modal"
-				data-target="#modal${item.product_id}">
-				<h3>${item.getShortname()}</h3>
+				<c:forEach var='item' items='${myRent}'>
+				${item.getProduct_id().getShortname()}
 				<a href="#" class="d-block mb-4 h-100"> <img
-					class="img-fluid img-thumbnail" alt="${item.getShortname()}"
-					src="ConvertBlobServlet?product_id=${item.product_id}">
-				</a>
-			</div>
-			<div class="modal" id="modal${item.product_id}">
-				<div class="modal-dialog">
-					<div class="modal-content">
+						class="img-fluid img-thumbnail"
+						alt="${item.getProduct_id().getShortname()}"
+						src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">
+					</a>
 
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">${item.getShortname()}</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
+					<form action="ChangeRentServlet" method="post">
+						<input type="hidden" id="<c:out value="${item.getRent_id()}"/>"
+							name="rent_id" value="<c:out value="${item.getRent_id()}"/>">
+						<input type="hidden"
+							id="<c:out value="${item.getProduct_id().getProduct_id()}"/>"
+							name="product_id"
+							value="<c:out value="${item.getProduct_id().getProduct_id()}"/>">
+						<input type="hidden"
+							id="<c:out value="${item.getUser_id().getUser_id()}"/>"
+							name="user_id"
+							value="<c:out value="${item.getUser_id().getUser_id()}"/>">
+						<button style="margin-right: 10px"
+							class="nav navbar-nav navbar-right btn btn-warning" type="submit"
+							style="margin-rigth: 20px">Dejar de alquilar</button>
+					</form>
+					<form action="PdfServlet" method="post">
+						<input type="hidden" name="rentId"
+							value="Precio alquiler: <c:out value="${item.getRent_id()}"/> euros">
+						<input type="hidden" name="username"
+							value="Nombre del usuario: <c:out value="${item.getUser_id().getUsername()}"/>">
+						<input type="hidden" name="productname"
+							value="Nombre del producto: <c:out value="${item.getProduct_id().getShortname()}"/>">
+						<input type="hidden" name="img"
+							value="<img src="ConvertBlobServlet?product_id=${item.getProduct_id().getProduct_id()}">" />
 
-						<!-- Modal body -->
-						<div class="modal-body">
+						<input type="hidden" name="fulldescription"
+							value="Descripcion completa: <c:out value="${item.getProduct_id().getFulldescription()}"/>">
 
-							<img alt="${item.getShortname()}"
-								src="ConvertBlobServlet?product_id=${item.product_id}">
+						<button style="margin-right: 10px"
+							class="nav navbar-nav navbar-right btn btn-success" type="submit"
+							style="margin-rigth: 20px">PDF</button>
+					</form>
+				</c:forEach>
+			</c:when>
+		</c:choose>
+	</div>
+	<br>
+	<h1 class="text-center" ><fmt:message key="products.generalist" /></h1>
+	<div class="container alert-danger" id="general-content">
+		<div class="row align-items-center">
+			
+			<c:forEach var='item' items='${products}'>
 
-							<h5>Tipo: ${item.getType_id().getTypename()}</h5>
-							<h5>
-								Descripcion:
-								<h6>${item.getFulldescription()}</h6>
-							</h5>
-							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
-							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
+				<div class="col-lg-4 col-md-4 col-6 margin-left" id="productoscss"
+					data-toggle="modal" data-target="#modal${item.product_id}">
+					<h3>${item.getShortname()}</h3>
+					<a href="#" class="d-block mb-4 h-100"> <img
+						class="img-fluid img-thumbnail" alt="${item.getShortname()}"
+						src="ConvertBlobServlet?product_id=${item.product_id}">
+					</a>
+				</div>
+				<div class="modal" id="modal${item.product_id}">
+					<div class="modal-dialog">
+						<div class="modal-content">
 
-						</div>
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">${item.getShortname()}</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
 
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success"
-								data-dismiss="modal">CERRAR</button>
-							<c:choose>
-								<c:when test="${role=='user'}">
-									<form action="NewRentServlet" method="post">
-										<input type="hidden"
-											id="<c:out value="${item.getProduct_id()}"/>"
-											name="product_id"
-											value="<c:out value="${item.getProduct_id()}"/>"> <input
-											type="hidden" id="username" name="username"
-											value="<%=username%>">
-										<button style="margin-right: 10px"
-											class="nav navbar-nav navbar-right btn btn-danger"
-											type="submit" style="margin-rigth: 20px">Alquilar</button>
-									</form>
-								</c:when>
-							</c:choose>
+							<!-- Modal body -->
+							<div class="modal-body">
+
+								<img alt="${item.getShortname()}"
+									src="ConvertBlobServlet?product_id=${item.product_id}">
+
+								<h5>Tipo: ${item.getType_id().getTypename()}</h5>
+								<h5>
+									Descripcion:
+									<h6>${item.getFulldescription()}</h6>
+								</h5>
+								<h5>Empresa creadora: ${item.getCompany()}</h5>
+								<h5>Año de lanzamiento: ${item.getYear()}</h5>
+								<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
+
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success"
+									data-dismiss="modal">CERRAR</button>
+								<c:choose>
+									<c:when test="${role=='user'}">
+										<form action="NewRentServlet" method="post">
+											<input type="hidden"
+												id="<c:out value="${item.getProduct_id()}"/>"
+												name="product_id"
+												value="<c:out value="${item.getProduct_id()}"/>"> <input
+												type="hidden" id="username" name="username"
+												value="<%=username%>">
+											<button style="margin-right: 10px"
+												class="nav navbar-nav navbar-right btn btn-danger"
+												type="submit" style="margin-rigth: 20px">Alquilar</button>
+										</form>
+									</c:when>
+								</c:choose>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
 
+		</div>
 	</div>
-
 
 	<%
 		} else {
 	%>
 	<div class="container">
 		<h1>
-			Bienvenido
-			<%=username%></h1>
-		<p>Esperamos que les guste y encuentren lo que buscan</p>
+			Bienvenido, inicie sesion o registrese</h1>
+		<p>Para tener acceso a todas las funciones</p>
 	</div>
 
-
-	<div class="row text-center center text-lg-left">
-
-
-
-		<c:forEach var='item' items='${products}'>
+<br>
+<h1 class="text-center" ><fmt:message key="products.generalist" /></h1>
+	<div class="container alert-danger" id="general-content">
+		<div class="row text-center center text-lg-left">
 
 
 
-			<div class="col-lg-4 col-md-4 col-6" data-toggle="modal"
-				data-target="#modal${item.product_id}">
-				<h3>${item.getShortname()}</h3>
-				<a href="#" class="d-block mb-4 h-100"> <img
-					class="img-fluid img-thumbnail" alt="${item.getShortname()}"
-					src="ConvertBlobServlet?product_id=${item.product_id}">
-				</a>
-			</div>
-			<div class="modal" id="modal${item.product_id}">
-				<div class="modal-dialog">
-					<div class="modal-content">
+			<c:forEach var='item' items='${products}'>
 
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">${item.getShortname()}</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+				<div class="col-lg-4 col-md-4 col-6" data-toggle="modal"
+					data-target="#modal${item.product_id}">
+					<h3>${item.getShortname()}</h3>
+					<a href="#" class="d-block mb-4 h-100"> <img
+						class="img-fluid img-thumbnail" alt="${item.getShortname()}"
+						src="ConvertBlobServlet?product_id=${item.product_id}">
+					</a>
+				</div>
+				<div class="modal" id="modal${item.product_id}">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">${item.getShortname()}</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								<img alt="${item.getShortname()}"
+									src="ConvertBlobServlet?product_id=${item.product_id}">
+								<h5>Tipo: ${item.getType_id().getTypename()}</h5>
+								<h5>
+									Descripcion:
+									<h6>${item.getFulldescription()}</h6>
+								</h5>
+								<h5>Empresa creadora: ${item.getCompany()}</h5>
+								<h5>Año de lanzamiento: ${item.getYear()}</h5>
+								<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success"
+									data-dismiss="modal">CERRAR</button>
+							</div>
+
 						</div>
-
-						<!-- Modal body -->
-						<div class="modal-body">
-							<img alt="${item.getShortname()}"
-								src="ConvertBlobServlet?product_id=${item.product_id}">
-							<h5>Tipo: ${item.getType_id().getTypename()}</h5>
-							<h5>
-								Descripcion:
-								<h6>${item.getFulldescription()}</h6>
-							</h5>
-							<h5>Empresa creadora: ${item.getCompany()}</h5>
-							<h5>Año de lanzamiento: ${item.getYear()}</h5>
-							<h5>Precio Alquiler: ${item.getReposition_value()}</h5>
-						</div>
-
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success"
-								data-dismiss="modal">CERRAR</button>
-						</div>
-
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
 
+		</div>
 	</div>
-
 	<%
 		}
 	%>
+	
+	 <footer id="sticky-footer" class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <small>Copyright &copy; FilmClub</small>
+    </div>
+  </footer>
 
 </body>
 </html>

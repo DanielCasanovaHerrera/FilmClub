@@ -139,6 +139,26 @@ public class UserDaoImpl implements UserDao{
 		return success;
 	}
 
-	
+	public static boolean updateUser(User user) {
+		
+		boolean success = false;
+
+		try {
+			HibernateUtil.buildSessionFactory();
+			HibernateUtil.openSessionAndBindToThread();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+			session.saveOrUpdate(user);
+			session.getTransaction().commit();
+
+			success = true;
+			session.close();
+		} catch (Exception e) {
+			logger.error("'UserDAO.updateUser' method has raised an exception: " + e.getMessage());
+		}
+
+		return success;
+	}
 
 }

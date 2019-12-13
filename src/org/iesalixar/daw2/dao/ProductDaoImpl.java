@@ -192,7 +192,7 @@ public class ProductDaoImpl {
 		return changeToState(product_id, false);
 	}
 	
-	/*public static boolean update(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
+	/*public static boolean updateProduct(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
 		boolean success = true;
 
 		Session session = null;
@@ -207,12 +207,15 @@ public class ProductDaoImpl {
 			if(product.getShortname()!=shortName && shortName!=null && shortName!=" "){
 				product.setShortname(shortName);
 			}
+			
 			if(product.getFulldescription()!=fulldescription && fulldescription!=null && fulldescription!=" "){
 				product.setFulldescription(fulldescription);
 			}
+			
 			if(product.getCompany()!=company && company!=null && company!=" "){
 				product.setCompany(company);
 			}
+			
 			if(product.getReposition_value()!=reposition_value && reposition_value!=null){
 				product.setReposition_value(reposition_value);
 			}

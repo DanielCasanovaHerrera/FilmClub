@@ -56,7 +56,7 @@ public class PdfServlet extends HttpServlet {
 	        response.addHeader("Content-Type", "application/force-download"); 
 	        response.addHeader("Content-Disposition", "attachment; filename=\"" +"Equipo: "+ productname + ".pdf\"");
 	        response.getOutputStream().write(output.toByteArray());
-	        response.sendRedirect(urlIndex);
+	        //response.sendRedirect(urlIndex);
 	    } catch (Exception ex) {            
 	        ex.printStackTrace();
 	        response.sendRedirect(urlIndex);
