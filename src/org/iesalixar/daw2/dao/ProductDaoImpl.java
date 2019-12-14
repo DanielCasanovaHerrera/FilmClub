@@ -4,12 +4,15 @@ import java.awt.Image;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.iesalixar.daw2.helper.HibernateUtil;
 import org.iesalixar.daw2.model.Product;
+import org.iesalixar.daw2.model.Type;
+import org.iesalixar.daw2.model.User;
 
 public class ProductDaoImpl {
 
@@ -192,45 +195,66 @@ public class ProductDaoImpl {
 		return changeToState(product_id, false);
 	}
 	
-	/*public static boolean updateProduct(int product_id,String shortName, String fulldescription,String company, Double reposition_value){
-		boolean success = true;
-
-		Session session = null;
+	
+	public static boolean updateProduct(Product product){
+		boolean success = false;
 
 		try {
-			Product product = getProductId(product_id);
+			HibernateUtil.buildSessionFactory();
+			HibernateUtil.openSessionAndBindToThread();
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+			session.beginTransaction();
+			session.saveOrUpdate(product);
+			session.getTransaction().commit();
+
+			success = true;
+			session.close();
+		} catch (Exception e) {
+			logger.error("'ProductDaoImpl.updateProduct' method has raised an exception: " + e.getMessage());
+		}
+
+		return success;
+	}
+	
+	
+	 public static boolean createProduct(String shortname,int type_id, String fulldescription, String company, Date year, double reposition_value) {
+
+		boolean success = true;	
+		
+		Type type= TypeDaoImpl.getTypeId(type_id);
+		
+
+		Product product= new Product();
+		product.setShortname(shortname);
+		product.setType_id(type);
+		product.setFulldescription(fulldescription);
+		//product.setImg(img);
+		product.setCompany(company);
+		product.setYear(year);
+		product.setReposition_value(reposition_value);
+		product.setActive(true);
+		product.setState(true);
+
+		Session session = null;
+		try {
 			HibernateUtil.buildSessionFactory();
 			HibernateUtil.openSessionAndBindToThread();
 			session = HibernateUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			
-			if(product.getShortname()!=shortName && shortName!=null && shortName!=" "){
-				product.setShortname(shortName);
-			}
-			
-			if(product.getFulldescription()!=fulldescription && fulldescription!=null && fulldescription!=" "){
-				product.setFulldescription(fulldescription);
-			}
-			
-			if(product.getCompany()!=company && company!=null && company!=" "){
-				product.setCompany(company);
-			}
-			
-			if(product.getReposition_value()!=reposition_value && reposition_value!=null){
-				product.setReposition_value(reposition_value);
-			}
-			
-			session.update(product);
+			session.save(product);
 			session.getTransaction().commit();
-			logger.info(product);
-
+			logger.info("UserDAOImpl.createUser :  "+product);
 		} catch (Exception e) {
-			logger.error("ProductDAOImpl.update has raised an exception: " + e.getMessage());
+			logger.error("UserDaoImpl.create has raised an exception: "); // +e.getMessage());
+			e.printStackTrace();
 			success = false;
 		}
 
 		return success;
-	}*/
+	}
+	
+	 
 
 	
 }

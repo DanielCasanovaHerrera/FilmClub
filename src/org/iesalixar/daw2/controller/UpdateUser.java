@@ -51,37 +51,39 @@ public class UpdateUser extends HttpServlet {
 		String email = request.getParameter("email");
 		User user = UserDaoImpl.getUserIDForUsername(username);
 		
-		if (user.getUsername() != username) {
-			user.setUsername(username);
-		}else {
+		if (user.getUsername().equals(username)) {
+			
 			user.setUsername(user.getUsername());
+		}else {
+			user.setUsername(username);
 		
 		}
-		if (user.getPassword() != password) {
-			user.setPassword(password);
-		}else {
+		if (user.getPassword().equals(password)) {
+			
 			user.setPassword(user.getPassword());
-		}
-		if (user.getUser_fullname() != fullname) {
-			user.setUser_fullname(fullname);
 		}else {
+			user.setPassword(password);
+		}
+		if (user.getUser_fullname().equals(fullname)) {
 			user.setUser_fullname(user.getUser_fullname());
-		}
-		if (user.getAddress() != address) {
-			user.setAddress(address);
 		}else {
+			user.setUser_fullname(fullname);
+		}
+		if (user.getAddress().equals(address)) {
 			user.setAddress(user.getAddress());
-		}
-		if (user.getEmail() != email) {
-			user.setEmail(email);
 		}else {
+			user.setAddress(address);
+		}
+		if (user.getEmail().equals(email)) {
 			user.setEmail(user.getEmail());
+		}else {
+			user.setEmail(email);
 		}
 		
 		UserDaoImpl.updateUser(user);
 		
 		
-		response.sendRedirect(urlIndex);
+		response.sendRedirect(urlsetings);
 		
 		
 	}

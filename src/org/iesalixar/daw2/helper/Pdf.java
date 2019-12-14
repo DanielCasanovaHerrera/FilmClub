@@ -42,7 +42,7 @@ public class Pdf{
             addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, productname);
             addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, fulldescription, false);
             addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, img, false);
-            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, rent, false);
+            addParagraph(FONT,contentStream, width, 0, -FONT_SIZE, "Factura FilmClub", false);
             contentStream.endText();
 
             contentStream.close();

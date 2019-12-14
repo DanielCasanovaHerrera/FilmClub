@@ -56,10 +56,18 @@
 				
 				<c:choose>
 					<c:when test="${role == 'admin'}">
-						<li class="nav-item"><a class="nav-link"
-							href="administrator.jsp">administrador</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="updateProduct.jsp">Modificar Productos</a></li>	
+					
+					<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Administracion
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				          <a class="dropdown-item" href="updateProduct.jsp">Crear y modificar Productos</a>
+				          <a class="dropdown-item" href="administrator.jsp">Cambiar estado de los productos y eliminar</a>
+				          
+				        </div>
+			      	</li>
+						
 					</c:when>
 					<c:when test="${username != null}">
 						<li class="nav-item"><a class="nav-link" href="settingsUser.jsp">Mysite</a></li>
@@ -157,8 +165,9 @@
 				<h1 class="text-center">
 					<fmt:message key="products.yourlist" />
 				</h1>
-
+				<div class="row align-items-center">
 				<c:forEach var='item' items='${myRent}'>
+				<div class="col-lg-4 col-md-4 col-6 margin-left">
 				${item.getProduct_id().getShortname()}
 				<a href="#" class="d-block mb-4 h-100"> <img
 						class="img-fluid img-thumbnail"
@@ -198,7 +207,9 @@
 							class="nav navbar-nav navbar-right btn btn-success" type="submit"
 							style="margin-rigth: 20px">PDF</button>
 					</form>
+					</div>
 				</c:forEach>
+				</div>
 			</c:when>
 		</c:choose>
 	</div>

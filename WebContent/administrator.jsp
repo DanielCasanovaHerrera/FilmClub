@@ -193,10 +193,14 @@
 								<c:when test="${role=='admin'}">
 									<form action="ChangeStatusServlet" method="post">
 										<input type="hidden"
-											id="<c:out value=" ${item.getProduct_id()}" />"
+											id="product_id"
 											name="product_id"
 											value="
 										<c:out value="${item.getProduct_id()}" />&unapprove">
+										<input type="hidden"
+											id="product_id2"
+											name="product_id2"
+											value="${item.getProduct_id()}">
 										<button style="margin-right: 10px"
 											class="nav navbar-nav navbar-right btn btn-warning"
 											type="submit" style="margin-rigth: 20px">
@@ -206,10 +210,9 @@
 									</form>
 									<form action="RemoveServlet" method="post">
 										<input type="hidden"
-											id="<c:out value=" ${item.getProduct_id()}" />"
+											id="product_id"
 											name="product_id"
-											value="
-										<c:out value="${item.getProduct_id()}" />&unapprove">
+											value="${item.getProduct_id()}">
 										<button style="margin-right: 10px"
 											class="nav navbar-nav navbar-right btn btn-danger"
 											type="submit" style="margin-rigth: 20px">eliminar</button>
@@ -269,10 +272,14 @@
 								<c:when test="${role=='admin'}">
 									<form action="ChangeStatusServlet" method="post">
 										<input type="hidden"
-											id="<c:out value=" ${item.getProduct_id()}" />"
+											id="product_id"
 											name="product_id"
 											value="
-										<c:out value="${item.getProduct_id().getState()}" />&approve">
+										<c:out value="${item.getProduct_id()}" />&approve">
+										<input type="hidden"
+											id="product_id2"
+											name="product_id2"
+											value="${item.getProduct_id()}">
 										<button style="margin-right: 10px"
 											class="nav navbar-nav navbar-right btn btn-warning"
 											type="submit" style="margin-rigth: 20px">
@@ -280,21 +287,16 @@
 											<fmt:message key="products.approveproduct" />
 										</button>
 									</form>
-								</c:when>
-								<c:when test="${role=='admin'}">
+								
 									<!-- RemoveServlet contains logic related with removing a product given its 'product_id' -->
 									<form action="RemoveServlet" method="post">
 										<input type="hidden"
-											id="<c:out value=" ${item.getProduct_id()}" />"
+											id="product_id"
 											name="product_id"
-											value="
-										<c:out value="${item.getProduct_id()}" />">
+											value="${item.getProduct_id()}">
 										<button style="margin-right: 10px"
 											class="nav navbar-nav navbar-right btn btn-danger"
-											type="submit" style="margin-rigth: 20px">
-											<i class="icon-trash"> </i>
-											<fmt:message key="products.removeproduct" />
-										</button>
+											type="submit" style="margin-rigth: 20px">eliminar</button>
 									</form>
 								</c:when>
 							</c:choose>

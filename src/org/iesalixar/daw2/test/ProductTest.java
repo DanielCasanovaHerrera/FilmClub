@@ -26,7 +26,7 @@ public class ProductTest {
 	@Test
 	public void test2() {	
 		
-		 assertEquals(2, productImpl.getProducts(-1, true).size());
+		 assertEquals(3, productImpl.getProducts(-1, true).size());
 	}
 
 }

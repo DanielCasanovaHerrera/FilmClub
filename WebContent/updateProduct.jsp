@@ -2,27 +2,24 @@
 <%@ include file="init.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/social.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:setBundle basename="interface" />
 
-<title>FilmClub</title>
-<link rel="shortcut icon" href="img/film2.jpg" />
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/social.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<fmt:setBundle basename="interface" />
+
+	<title>FilmClub</title>
+	<link rel="shortcut icon" href="img/film2.jpg" />
 </head>
+
 <body>
 	<%
 		String username = null;
@@ -37,19 +34,15 @@
 		}
 	%>
 	<%@ include file="social.jsp"%>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-		style="margin: 24px 0;">
-		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
-			height="50px"> </a>
-		<button class="navbar-toggler navbar-toggler-right" type="button"
-			data-toggle="collapse" data-target="#navb">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin: 24px 0;">
+		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png" height="50px"> </a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		 <div class="collapse navbar-collapse" id="navb">
+		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link active"
-					href="index.jsp">Principal</a></li>
+				<li class="nav-item"><a class="nav-link active" href="index.jsp">Principal</a></li>
 				<li class="nav-item"><a class="nav-link" href="films.jsp">Peliculas</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="tvSeries.jsp">Series</a>
@@ -58,49 +51,42 @@
 				</li>
 				<c:choose>
 					<c:when test="${role == 'admin'}">
-						<li class="nav-item"><a class="nav-link"
-							href="administrator.jsp">administrador</a></li>
-							<li class="nav-item"><a class="nav-link"
-							href="updateProduct.jsp">Modificar Productos</a></li>
+						<li class="nav-item"><a class="nav-link" href="administrator.jsp">administrador</a></li>
+						<li class="nav-item"><a class="nav-link" href="updateProduct.jsp">Modificar Productos</a></li>
 					</c:when>
 				</c:choose>
-			</ul> 
+			</ul>
 
 			<c:choose>
 
 				<c:when test="${username == null}">
 					<div class="form-inline my-2 my-lg-0">
 						<div class="btn-group">
-							<button style="margin-right: 50px" type="button"
-								class="btn btn-success dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Iniciar
+							<button style="margin-right: 50px" type="button" class="btn btn-success dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar
 								Sesion</button>
 							<div class="dropdown-menu">
 								<form action="LoginServlet" method="POST">
 									<label for="validationTooltipUsername">Nombre</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"
-												id="validationTooltipUsernamePrepend"><i
-												class="material-icons">account_box</i></span>
+											<span class="input-group-text" id="validationTooltipUsernamePrepend"><i
+													class="material-icons">account_box</i></span>
 										</div>
-										<input type="text" name="username" value="usuario"
-											class="form-control" id="validationTooltipUsername"
-											placeholder="Login"
+										<input type="text" name="username" value="usuario" class="form-control"
+											id="validationTooltipUsername" placeholder="Login"
 											aria-describedby="validationTooltipUsernamePrepend" required>
 										<div class="invalid-tooltip">Please choose a unique and
 											valid username.</div>
 									</div>
-									<label for="validationTooltipPassword">Contraseña</label>
+									<label for="validationTooltipPassword">Contraseï¿½a</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text"
-												id="validationTooltipPasswordPrepend"><i
-												class="material-icons">https</i></span>
+											<span class="input-group-text" id="validationTooltipPasswordPrepend"><i
+													class="material-icons">https</i></span>
 										</div>
-										<input type="password" name="password" value="contraseña"
-											class="form-control" id="validationTooltipPassworde"
-											placeholder="Password"
+										<input type="password" name="password" value="contraseï¿½a" class="form-control"
+											id="validationTooltipPassworde" placeholder="Password"
 											aria-describedby="validationTooltipUsernamePrepend" required>
 										<div class="invalid-tooltip">Please choose a unique and
 											valid password.</div>
@@ -152,77 +138,137 @@
 			<p>Esperamos que les guste y encuentren lo que buscan</p>
 		</div>
 	</div>
-	<div class="container alert-info" id="my-content">
 
-		<h1 class="">Actualizar Productos:</h1>
-		<div class="container alert-danger" id="general-content">
-		<div class="row align-items-center">
-			
-			<c:forEach var='item' items='${products}'>
+	<div class="container mt-3">
 
-				<div class="col-lg-4 col-md-4 col-6 margin-left" id="productoscss"
-					data-toggle="modal" data-target="#modal${item.product_id}">
-					<h3>${item.getShortname()}</h3>
-					<a href="#" class="d-block mb-4 h-100"> <img
-						class="img-fluid img-thumbnail" alt="${item.getShortname()}"
-						src="ConvertBlobServlet?product_id=${item.product_id}">
-					</a>
-				</div>
-				<div class="modal" id="modal${item.product_id}">
-					<div class="modal-dialog">
-						<div class="modal-content">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#entrantes">Modificar Producto</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#primeros">Crear nuevo producto</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div id="entrantes" class="container tab-pane active"><br>
 
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title">${item.getShortname()}</h4>
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-							</div>
+				<div class="row">
 
-							<!-- Modal body -->
-							<div class="modal-body">
 
-								<img alt="${item.getShortname()}"
-									src="ConvertBlobServlet?product_id=${item.product_id}">
-								<form class="" action="UpdateProduct" method="POST">
-									<label for="tipo">Tipo:</label> <br> 
-									<input name="tipo" value="${item.getType_id().getTypename()}"><br><br>
-									<label for="fulldescription">Descripcion:</label> <br>
-									 <textarea class="fulldescription" rows="10" cols="40" >${item.getFulldescription()}</textarea><br><br> 
-									<label for="tipo">Empresa creadora:</label> <br> 
-									<input name="tipo" value="${item.getCompany()}"><br><br>
-									<label for="tipo">Año de lanzamiento:</label> <br> 
-									<input name="tipo" value="${item.getYear()}"><br><br>
-									<label for="tipo">Precio Alquiler:</label> <br> 
-									<input name="tipo" value="${item.getReposition_value()}"><br><br>
-									
-									<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-success text-center" type="submit" style="margin: auto">Actualizar</button>
-								</form>
-							</div>
+					<div class="container alert-info" id="my-content">
 
-							<!-- Modal footer -->
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success"
-									data-dismiss="modal">CERRAR</button>
-								
+						<h1 class="">Actualizar Productos:</h1>
+						<div class="container alert-danger" id="general-content">
+							<div class="row align-items-center">
+
+								<c:forEach var='item' items='${products}'>
+
+									<div class="col-lg-4 col-md-4 col-6 margin-left" id="productoscss"
+										data-toggle="modal" data-target="#modal${item.product_id}">
+										<h3>${item.getShortname()}</h3>
+										<a href="#" class="d-block mb-4 h-100"> <img class="img-fluid img-thumbnail"
+												alt="${item.getShortname()}"
+												src="ConvertBlobServlet?product_id=${item.product_id}">
+										</a>
+									</div>
+									<div class="modal" id="modal${item.product_id}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+
+												<!-- Modal Header -->
+												<div class="modal-header">
+													<h4 class="modal-title">${item.getShortname()}</h4>
+													<button type="button" class="close"
+														data-dismiss="modal">&times;</button>
+												</div>
+
+												<!-- Modal body -->
+												<div class="modal-body">
+
+													<img alt="${item.getShortname()}"
+														src="ConvertBlobServlet?product_id=${item.product_id}">
+													<form class="" action="UpdateProduct" method="POST">
+														<input type="hidden" name="id" value="${item.getProduct_id()}">
+
+														<label for="fulldescription">Descripcion:</label> <br>
+														<textarea class="fulldescription" rows="10"
+															cols="40">${item.getFulldescription()}</textarea><br><br>
+
+														<label for="company">Empresa creadora:</label> <br>
+														<input name="company" value="${item.getCompany()}"><br><br>
+
+
+														<label for="reposition">Precio Alquiler:</label> <br>
+														<input type="number" name="reposition"
+															value="${item.getReposition_value()}"><br><br>
+
+														<button style="margin-right: 10px"
+															class="nav navbar-nav navbar-right btn btn-success text-center"
+															type="submit" style="margin: auto">Actualizar</button>
+													</form>
+												</div>
+
+												<!-- Modal footer -->
+												<div class="modal-footer">
+													<button type="button" class="btn btn-success"
+														data-dismiss="modal">CERRAR</button>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-		</div>
-		</div>
-	</div>
+			</div>
+			<div id="primeros" class="container tab-pane fade"><br>
+				<div class="row">
+					<form action="CreateProduct" method="post">
+						<label for="shortname">Nombre del producto</label><br>
+						<input type="text" name="shortname" id="shortname" placeholder="nombre del producto"><br><br>
 
-	<%
+						<label for="type_id">Tipo de producto</label><br>
+						<select name="type_id">
+							<option value="1" selected>Pelicula</option> 
+							<option value="2" >Serie</option>
+							<option value="3">Juego</option>
+						</select><br><br>
+
+						<label for="fulldescription">Descripcion del producto</label><br>
+						<input type="textarea" name="fulldescription" id="fulldescription" placeholder="descripcion del producto"><br><br>
+
+						<label for="company">CompaÃ±ia creadora del producto</label><br>
+						<input type="text" name="company" id="company" placeholder="compaÃ±ia del producto"><br><br>
+
+						<label for="year">AÃ±o de lanzamiento</label><br>
+						<input type="date" name="year" id="year" placeholder="aÃ±o de lanzamiento"><br><br>
+
+						<label for="reposition_value">Precio alquiler</label><br>
+						<input type="text" name="reposition_value" id="reposition_value" placeholder="precio alquiler"><br><br>
+
+						<label for="img">Selecciona una imagen</label><br>
+						<input type="file" name="img"><br><br>
+
+						<button style="margin-right: 10px" class="nav navbar-nav navbar-right btn btn-success text-center" type="submit" style="margin: auto">Crear producto</button>
+					</form>
+				</div>
+			
+			</div>
+		</div>
+
+		<%
 		}
 	%>
-	<br>
-	<br>
-	<footer id="sticky-footer" class="py-4 bg-dark text-white">
-		<div class="container text-center">
-			<small>Copyright &copy; FilmClub</small>
-		</div>
-	</footer>
+		<br>
+		<br>
+		<footer id="sticky-footer" class="py-4 bg-dark text-white">
+			<div class="container text-center">
+				<small>Copyright &copy; FilmClub</small>
+			</div>
+		</footer>
 
 </body>
+
 </html>
