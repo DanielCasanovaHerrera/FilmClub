@@ -119,8 +119,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 		style="margin: 24px 0;">
 		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
-			height="50px">
-			</a>
+			height="50px"> </a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navb">
 			<span class="navbar-toggler-icon"></span>
@@ -128,7 +127,7 @@
 
 		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link active"
+				<li class="nav-item"><a class="nav-link"
 					href="index.jsp">Principal</a></li>
 				<li class="nav-item"><a class="nav-link" href="films.jsp">Peliculas</a>
 				</li>
@@ -136,19 +135,35 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="games.jsp">Juegos</a>
 				</li>
+				
 				<c:choose>
 					<c:when test="${role == 'admin'}">
-						<li class="nav-item"><a class="nav-link"
-							href="administrator.jsp">administrador</a></li>
+					
+					<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Administracion
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				          <a class="dropdown-item" href="updateProduct.jsp">Crear y modificar Productos</a>
+				          <a class="dropdown-item" href="administrator.jsp">Cambiar estado de los productos y eliminar</a>
+				          
+				        </div>
+			      	</li>
+						
 					</c:when>
+					<c:when test="${username != null}">
+						<li class="nav-item"><a class="nav-link" href="settingsUser.jsp">Mysite</a></li>
+					</c:when>
+					
 				</c:choose>
 			</ul>
 
 			<c:choose>
+
 				<c:when test="${username == null}">
 					<div class="form-inline my-2 my-lg-0">
 						<div class="btn-group">
-							<button type="button" class="btn btn-success dropdown-toggle"
+							<button style="margin-right:50px" type="button" class="btn btn-success dropdown-toggle"
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false">Iniciar Sesion</button>
 							<div class="dropdown-menu">
@@ -181,6 +196,7 @@
 										<div class="invalid-tooltip">Please choose a unique and
 											valid password.</div>
 									</div>
+									<br>
 									<button type="submit" class="btn btn-warning" value="Enviar">Enviar</button>
 									<a class="btn btn-primary" href="register.jsp">Resgistrate</a>
 								</form>

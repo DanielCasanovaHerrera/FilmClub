@@ -43,14 +43,14 @@ public class UpdateUser extends HttpServlet {
 		
 		String urlLogin = "/FilmClub/login.jsp", urlsetings = "/FilmClub/settingsUser.jsp", urlIndex="/FilmClub/index.jsp";
 		HttpSession sesion = request.getSession();
-		
+		//collect the data passed by parameter
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String fullname = request.getParameter("fullname");
 		String address = request.getParameter("address");
 		String email = request.getParameter("email");
 		User user = UserDaoImpl.getUserIDForUsername(username);
-		
+		//the paremeters is checked and update
 		if (user.getUsername().equals(username)) {
 			
 			user.setUsername(user.getUsername());
@@ -79,7 +79,7 @@ public class UpdateUser extends HttpServlet {
 		}else {
 			user.setEmail(email);
 		}
-		
+		//call to the method for update a user
 		UserDaoImpl.updateUser(user);
 		
 		

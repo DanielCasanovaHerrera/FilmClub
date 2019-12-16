@@ -4,11 +4,14 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.iesalixar.daw2.helper.HibernateUtil;
 import org.iesalixar.daw2.model.User;
-
+/*
+Class that contains all the methods of Users*/
 public class UserDaoImpl implements UserDao{
 	
 	final static Logger logger = Logger.getLogger(UserDaoImpl.class);
 	
+	/*
+method for a user to login*/
 	public boolean login(String username, String password) {
 
 		User user = null;
@@ -28,7 +31,8 @@ public class UserDaoImpl implements UserDao{
 
 		return (user != null);
 	}
-
+	/*
+method that returns the user's role*/
 	public String getUserRole(String username) {
 		// TODO Auto-generated method stub
 		String role="user";
@@ -54,7 +58,8 @@ public class UserDaoImpl implements UserDao{
 		}
 		return role;
 	}
-
+	
+	/*method that returns a user id according to the username*/
 	public int getUserID(String username) {
 		// TODO Auto-generated method stub
 		int id=-1;
@@ -82,7 +87,7 @@ public class UserDaoImpl implements UserDao{
 		
 		return id;
 	}
-	
+	/*method that returns a user according to the username*/
 	public static User getUserIDForUsername(String username) {
 		// TODO Auto-generated method stub
 		User user = null;
@@ -109,6 +114,8 @@ public class UserDaoImpl implements UserDao{
 		
 		return user;
 	}
+	
+	/*method that creates a user*/
 	public boolean createUser(String username, String password, String fullname, String address, String email) {
 
 		boolean success = true;	
@@ -139,6 +146,8 @@ public class UserDaoImpl implements UserDao{
 		return success;
 	}
 
+	/*
+method that modifies a user*/
 	public static boolean updateUser(User user) {
 		
 		boolean success = false;

@@ -47,7 +47,7 @@ public class UpdateProduct extends HttpServlet {
 		
 		String urlsetings = "/FilmClub/updateProduct.jsp", urlIndex="/FilmClub/index.jsp";
 		HttpSession sesion = request.getSession();
-		
+		//collect the data passed by parameter
 		int id = Integer.valueOf(request.getParameter("id"));
 	
 		String fulldescription = request.getParameter("fulldescription");
@@ -56,7 +56,7 @@ public class UpdateProduct extends HttpServlet {
 		
 		Product product = ProductDaoImpl.getProductId(id);
 	
-		
+		//the paremeters is checked and update
 		if (product.getCompany().equals(company)) {
 			
 			product.setCompany(product.getCompany());
@@ -69,7 +69,7 @@ public class UpdateProduct extends HttpServlet {
 			product.setReposition_value(product.getReposition_value());
 		}
 		
-		
+		//call to the method for update a product
 		ProductDaoImpl.updateProduct(product);
 		
 		

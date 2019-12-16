@@ -7,11 +7,13 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.iesalixar.daw2.helper.HibernateUtil;
 import org.iesalixar.daw2.model.Product_Category;
-
+/*
+Class that contains all the methods of Category*/
 public class Product_CategoryDaoImpl {
 	
 	final static Logger logger = Logger.getLogger(Product_CategoryDaoImpl.class);
 	
+	/*method that returns a list of categories*/
 	public static List<Product_Category> getCategory(int product_id) {
 		
 		String sql="SELECT pc From Product_Category As pc WHERE pc.product_id='"+product_id+"'";

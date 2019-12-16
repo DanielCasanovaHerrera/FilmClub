@@ -46,7 +46,7 @@
 
 		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link active"
+				<li class="nav-item"><a class="nav-link"
 					href="index.jsp">Principal</a></li>
 				<li class="nav-item"><a class="nav-link" href="films.jsp">Peliculas</a>
 				</li>
@@ -54,11 +54,26 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="games.jsp">Juegos</a>
 				</li>
+				
 				<c:choose>
 					<c:when test="${role == 'admin'}">
-						<li class="nav-item"><a class="nav-link"
-							href="administrator.jsp">administrador</a></li>
+					
+					<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Administracion
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				          <a class="dropdown-item" href="updateProduct.jsp">Crear y modificar Productos</a>
+				          <a class="dropdown-item" href="administrator.jsp">Cambiar estado de los productos y eliminar</a>
+				          
+				        </div>
+			      	</li>
+						
 					</c:when>
+					<c:when test="${username != null}">
+						<li class="nav-item"><a class="nav-link active" href="settingsUser.jsp">Mysite</a></li>
+					</c:when>
+					
 				</c:choose>
 			</ul>
 
@@ -67,10 +82,9 @@
 				<c:when test="${username == null}">
 					<div class="form-inline my-2 my-lg-0">
 						<div class="btn-group">
-							<button style="margin-right: 50px" type="button"
-								class="btn btn-success dropdown-toggle" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Iniciar
-								Sesion</button>
+							<button style="margin-right:50px" type="button" class="btn btn-success dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Iniciar Sesion</button>
 							<div class="dropdown-menu">
 								<form action="LoginServlet" method="POST">
 									<label for="validationTooltipUsername">Nombre</label>
@@ -110,7 +124,6 @@
 					</div>
 				</c:when>
 				<c:when test="${username != null}">
-
 					<form class="form-inline my-2 my-lg-0">
 						<a class="btn btn-danger" href="/FilmClub/LogoutServlet">Cerrar
 							sesion</a>
@@ -123,7 +136,8 @@
 
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="index.jsp">Principal</a></li>
+			<li class="breadcrumb-item"><a href="index.jsp">Principal</a></li>
+			<li class="breadcrumb-item active"><a href="settingsUser.jsp">Mi sitio</a></li>
 		</ol>
 	</nav>
 

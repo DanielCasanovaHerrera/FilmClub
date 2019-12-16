@@ -48,13 +48,13 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession sesion = request.getSession();
-
+		//collect the data passed by parameter
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
 		String urlLogin = "/FilmClub/login.jsp", urlIndex = "/FilmClub/index.jsp";
 		String err = "";
-		
+		//it is checked if the parameters
 		if (username.equals("") || password.equals("") ) {
 			err += "Must enter full information!";
 		} else {
@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			if (err.length() == 0) {
+				//and create the cookie with the dates for the user
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username);
 				session.setAttribute("user_id", userDao.getUserID(username));

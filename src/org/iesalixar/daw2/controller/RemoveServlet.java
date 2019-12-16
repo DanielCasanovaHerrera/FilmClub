@@ -39,10 +39,12 @@ public class RemoveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//collect the data passed by parameter
 		int product_id = Integer.valueOf(request.getParameter("product_id"));
 		
 		
-		
+		//the method to remove a product is invoked
 		ProductDaoImpl.remove(product_id);
 
 

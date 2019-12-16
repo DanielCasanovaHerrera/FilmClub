@@ -40,9 +40,12 @@ public class ChangeStatusServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		//collect the data passed by parameter
 		int product_id = Integer.valueOf(request.getParameter("product_id2"));
 		
 		boolean status;
+		//it is checked if the product is approve or unapproved
 		if(request.getParameter("product_id").split("&")[1].equals("approve"))
 			status = ProductDaoImpl.setApproved(product_id);
 		else

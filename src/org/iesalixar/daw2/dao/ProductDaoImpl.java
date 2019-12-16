@@ -13,11 +13,13 @@ import org.iesalixar.daw2.helper.HibernateUtil;
 import org.iesalixar.daw2.model.Product;
 import org.iesalixar.daw2.model.Type;
 import org.iesalixar.daw2.model.User;
-
+/*
+Class that contains all the methods of Products*/
 public class ProductDaoImpl {
 
 	final static Logger logger = Logger.getLogger(ProductDaoImpl.class);
 
+	/*method that returns a list of Products*/
 	public static List<Product> getProducts(int user_id, boolean actived) {
 
 		String sql = "";
@@ -41,6 +43,7 @@ public class ProductDaoImpl {
 		return res;
 	}
 	
+	/*method that returns a list of products according to the type*/
 	public static List<Product> getForType(int user_id, boolean actived,int type_id) {
 
 		String sql = "";
@@ -65,7 +68,7 @@ public class ProductDaoImpl {
 		return res;
 	}
 	
-	
+	/*method that returns a product according to the id*/
 	public static Product getProductId(int id) {
 		Product product = null;
 		Session session = null;
@@ -83,6 +86,7 @@ public class ProductDaoImpl {
 		return product;
 	}
 	
+	/*method that remove a Product*/
 	public static boolean remove(int product_id) {
 		boolean success = true;
 
@@ -106,6 +110,7 @@ public class ProductDaoImpl {
 		return success;
 	}
 	
+	/*method that return a img in bytes array*/
 	public static byte[] loadImage(int product_id) {
 		String sql = "";
 		
@@ -130,7 +135,7 @@ public class ProductDaoImpl {
 		
 	}
 	
-	
+	/*method that changes the status of a product for active or innactive*/
 	private static boolean changeToApprove(int product_id, boolean active) {
 		boolean success = true;
 
@@ -155,14 +160,18 @@ public class ProductDaoImpl {
 		return success;
 	}
 	
+	/*
+method that checks the status of a product and changes it*/
 	public static boolean setApproved(int product_id) {
 		return changeToApprove(product_id, true);
 	}
-
+	/*
+	method that checks the status of a product and changes it*/
 	public static boolean setUnapproved(int product_id) {
 		return changeToApprove(product_id, false);
 	}
 	
+	/*method that changes the status of a product for active or innactive*/
 	private static boolean changeToState(int product_id, boolean state) {
 		boolean success = true;
 
@@ -186,16 +195,18 @@ public class ProductDaoImpl {
 
 		return success;
 	}
-	
+	/*
+	method that checks the state of a product and changes it*/
 	public static boolean setState(int product_id) {
 		return changeToState(product_id, true);
 	}
-
+	/*
+	method that checks the state of a product and changes it*/
 	public static boolean setNotState(int product_id) {
 		return changeToState(product_id, false);
 	}
 	
-	
+	/*method that modifies a product*/
 	public static boolean updateProduct(Product product){
 		boolean success = false;
 
@@ -217,7 +228,7 @@ public class ProductDaoImpl {
 		return success;
 	}
 	
-	
+/*method that create a product*/
 	 public static boolean createProduct(String shortname,int type_id, String fulldescription, String company, Date year, double reposition_value) {
 
 		boolean success = true;	

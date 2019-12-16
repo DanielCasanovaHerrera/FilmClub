@@ -50,12 +50,14 @@ public class NewRentServlet extends HttpServlet {
 
 		
 		Date rentIn = new Date(c.getTimeInMillis());
+		//collect the data passed by parameter
 		Product product_id= ProductDaoImpl.getProductId(Integer.valueOf(request.getParameter("product_id")));
 		User username= UserDaoImpl.getUserIDForUsername(request.getParameter("username"));
 		
 		
 		
-		
+		//the data is checked
+		// if it's true change te estate for the product and create a hystoric
 		if (RentDaoImpl.createOrChangeRent(product_id,username , rentOut, rentIn)) {
 			ProductDaoImpl.setNotState(Integer.valueOf(request.getParameter("product_id")));
 			HystoricDaoImpl.createHystoric(product_id, username);

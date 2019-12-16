@@ -40,7 +40,9 @@ public class CategoryProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		/*collect the data passed by parameter*/
 		int product_id=Integer.parseInt(request.getParameter("product_id"));
+		/*the method is invoked to have the category*/
 		Product_CategoryDaoImpl.getCategory(product_id);
 	}
 

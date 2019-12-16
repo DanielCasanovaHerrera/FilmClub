@@ -47,7 +47,7 @@ public class ResgistrationServlet extends HttpServlet {
 
 		String 	urlRegister = "/register.jsp"; 
 		String 	urlIndex = "index.jsp";
-
+		//collect the data passed by parameter
 		String username=request.getParameter("username");
 
 		String password=request.getParameter("password");
@@ -59,7 +59,7 @@ public class ResgistrationServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		
 		String err = "";
-		
+		//it is checked if the parameter is correct and call to the method for create user
 		if (username.equals("") || password.equals("") || user_fullname.equals("") || address.equals("") || email.equals("")) {
 			err += "Must enter full information!";
 		} else {

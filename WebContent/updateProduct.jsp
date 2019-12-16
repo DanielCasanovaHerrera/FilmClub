@@ -34,26 +34,45 @@
 		}
 	%>
 	<%@ include file="social.jsp"%>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin: 24px 0;">
-		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png" height="50px"> </a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+		style="margin: 24px 0;">
+		<a class="navbar-brand" href="index.jsp"><img src="img/FCLogo.png"
+			height="50px"> </a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navb">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link active" href="index.jsp">Principal</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="index.jsp">Principal</a></li>
 				<li class="nav-item"><a class="nav-link" href="films.jsp">Peliculas</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="tvSeries.jsp">Series</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="games.jsp">Juegos</a>
 				</li>
+				
 				<c:choose>
 					<c:when test="${role == 'admin'}">
-						<li class="nav-item"><a class="nav-link" href="administrator.jsp">administrador</a></li>
-						<li class="nav-item"><a class="nav-link" href="updateProduct.jsp">Modificar Productos</a></li>
+					
+					<li class="nav-item dropdown">
+				        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				          Administracion
+				        </a>
+				        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				          <a class="dropdown-item" href="updateProduct.jsp">Crear y modificar Productos</a>
+				          <a class="dropdown-item active" href="administrator.jsp">Cambiar estado de los productos y eliminar</a>
+				          
+				        </div>
+			      	</li>
+						
 					</c:when>
+					<c:when test="${username != null}">
+						<li class="nav-item"><a class="nav-link" href="settingsUser.jsp">Mysite</a></li>
+					</c:when>
+					
 				</c:choose>
 			</ul>
 
@@ -62,31 +81,35 @@
 				<c:when test="${username == null}">
 					<div class="form-inline my-2 my-lg-0">
 						<div class="btn-group">
-							<button style="margin-right: 50px" type="button" class="btn btn-success dropdown-toggle"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar
-								Sesion</button>
+							<button style="margin-right:50px" type="button" class="btn btn-success dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Iniciar Sesion</button>
 							<div class="dropdown-menu">
 								<form action="LoginServlet" method="POST">
 									<label for="validationTooltipUsername">Nombre</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="validationTooltipUsernamePrepend"><i
-													class="material-icons">account_box</i></span>
+											<span class="input-group-text"
+												id="validationTooltipUsernamePrepend"><i
+												class="material-icons">account_box</i></span>
 										</div>
-										<input type="text" name="username" value="usuario" class="form-control"
-											id="validationTooltipUsername" placeholder="Login"
+										<input type="text" name="username" value="usuario"
+											class="form-control" id="validationTooltipUsername"
+											placeholder="Login"
 											aria-describedby="validationTooltipUsernamePrepend" required>
 										<div class="invalid-tooltip">Please choose a unique and
 											valid username.</div>
 									</div>
-									<label for="validationTooltipPassword">Contraseï¿½a</label>
+									<label for="validationTooltipPassword">Contraseña</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="validationTooltipPasswordPrepend"><i
-													class="material-icons">https</i></span>
+											<span class="input-group-text"
+												id="validationTooltipPasswordPrepend"><i
+												class="material-icons">https</i></span>
 										</div>
-										<input type="password" name="password" value="contraseï¿½a" class="form-control"
-											id="validationTooltipPassworde" placeholder="Password"
+										<input type="password" name="password" value="contraseña"
+											class="form-control" id="validationTooltipPassworde"
+											placeholder="Password"
 											aria-describedby="validationTooltipUsernamePrepend" required>
 										<div class="invalid-tooltip">Please choose a unique and
 											valid password.</div>
@@ -100,7 +123,6 @@
 					</div>
 				</c:when>
 				<c:when test="${username != null}">
-
 					<form class="form-inline my-2 my-lg-0">
 						<a class="btn btn-danger" href="/FilmClub/LogoutServlet">Cerrar
 							sesion</a>
@@ -113,7 +135,8 @@
 
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="index.jsp">Principal</a></li>
+			<li class="breadcrumb-item "><a href="index.jsp">Principal</a></li>
+			<li class="breadcrumb-item active"><a href="updateProduct.jsp">Crear y modificar Productos</a></li>
 		</ol>
 	</nav>
 

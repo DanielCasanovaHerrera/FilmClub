@@ -45,6 +45,7 @@ public class CreateProduct extends HttpServlet {
 		String 	urlIndex = "index.jsp";
 		HttpSession sesion = request.getSession();
 		
+		//collect the data passed by parameter
 		String shortname=request.getParameter("shortname");
 		int type_id=Integer.valueOf(request.getParameter("type_id"));
 		String fulldescription=request.getParameter("fulldescription");
@@ -55,7 +56,7 @@ public class CreateProduct extends HttpServlet {
 		
 		
 		 
-		
+		//it is checked if the parameter and call to the method for create product
 		if (!shortname.equals(" ") && type_id!= 0 && !fulldescription.equals(" ") && !company.equals(" ") && reposition_value!=0 ) {
 			ProductDaoImpl.createProduct(shortname,type_id ,fulldescription, company, year, reposition_value);
 		}

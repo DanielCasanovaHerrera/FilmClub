@@ -43,7 +43,8 @@ public class ChangeRentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String urlIndex = "/FilmClub/index.jsp";
-		
+		//it is checked if the rent has been removed
+		//if it's true if you change the state
 		if (RentDaoImpl.removeRent(Integer.valueOf(request.getParameter("rent_id")))) {
 			ProductDaoImpl.setState(Integer.valueOf(request.getParameter("product_id")));
 			//HystoricDaoImpl.removeHystoric(Integer.valueOf(request.getParameter("user_id")),Integer.valueOf(request.getParameter("product_id")));

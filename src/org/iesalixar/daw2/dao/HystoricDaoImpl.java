@@ -8,9 +8,12 @@ import org.iesalixar.daw2.model.Product;
 import javax.swing.JOptionPane;
 import org.iesalixar.daw2.model.User;
 
+/*
+Class that contains all the methods of Hystoric*/
 public class HystoricDaoImpl {
 	final static Logger logger = Logger.getLogger(HystoricDaoImpl.class);
 	
+	/*method that creates a Hystoric*/
 	public static boolean createHystoric(Product product_id,User user_id) {
 		
 		boolean result = false;
@@ -36,7 +39,7 @@ public class HystoricDaoImpl {
 		return result;
 		
 	}
-	
+	/*method that remove a Hystoric*/
 	public static boolean removeHystoric(int user_id,int product_id) {
 		boolean success = true;
 
@@ -60,6 +63,7 @@ public class HystoricDaoImpl {
 		return success;
 	}
 	
+	/*method that returns a Hystoric by its id*/
 	public static Hystoric getHystoricId(int user_id,int product_id) {
 		
 		String sql="";

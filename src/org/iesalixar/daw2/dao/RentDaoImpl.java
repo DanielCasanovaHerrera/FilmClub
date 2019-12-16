@@ -8,11 +8,12 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.iesalixar.daw2.helper.HibernateUtil;
 import org.iesalixar.daw2.model.*;
-
+/*
+Class that contains all the methods of Rent*/
 public class RentDaoImpl {
 
 	final static Logger logger = Logger.getLogger(RentDaoImpl.class);
-
+	/*method that activates or deactivates the rental of a product*/
 	public static boolean createOrChangeRent(Product product_id, User user_id, Date rentOut, Date rentIn) {
 
 		boolean result = false;
@@ -40,7 +41,7 @@ public class RentDaoImpl {
 		return result;
 
 	}
-
+	/*method that returns a list of rent according to the username*/
 	public static List<Rent> rentUser(String username) {
 		UserDaoImpl userdaoimpl= new UserDaoImpl();
 		int user_id=userdaoimpl.getUserID(username);
@@ -63,7 +64,7 @@ public class RentDaoImpl {
 		return rent;
 
 	}
-	
+	/*method that remove a Rent*/
 	public static boolean removeRent(int rent_id) {
 		boolean success = true;
 
@@ -86,7 +87,7 @@ public class RentDaoImpl {
 
 		return success;
 	}
-	
+	/*method that returns a rent according to the id*/
 	public static Rent getRentId(int id) {
 		Rent rent = null;
 		Session session = null;
